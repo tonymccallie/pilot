@@ -1,0 +1,30 @@
+@import "less/bootstrap.less";
+@import "less/greyback-defaults.less";
+@import "less/responsive.less";
+@import "fonts.less";
+
+body {
+	padding-top: @navbarHeight + 20px; /* 60px to make the container go all the way to the bottom of the topbar */
+}
+
+#banner {
+	margin-bottom: 20px;
+}
+
+#banner img {
+	width: 100%;
+}
+
+.scaleVid {
+	background: @gray;
+}
+
+#footer {
+	padding: 20px 0 10px; 
+	background: @grayDark;
+	color: @grayLight;
+}
+
+@import "responsive_large.less";
+@import "responsive_tablet.less";
+@import "responsive_phone.less";
