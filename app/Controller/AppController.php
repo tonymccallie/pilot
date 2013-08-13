@@ -7,7 +7,6 @@ class AppController extends Controller {
 	public $components = array(
 		'Authsome' => array('model' => 'User'),
 		'Session','Email','Cookie',
-		'DebugKit.Toolbar'
 	);
 	
 	public $user = array();
