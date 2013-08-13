@@ -19,7 +19,7 @@
 			dumpLineNumbers: "mediaQuery", // or "mediaQuery" or "all"
 		};
 	</script>
-	<script src="<?php echo $this->webroot ?>js/less-1.3.3.min.js"></script>
+	<script src="<?php echo $this->webroot ?>js/less-1.4.1.min.js"></script>
 <?php else: ?>
 	<link rel="stylesheet" type="text/css" href="<?php echo $this->webroot ?>css/styles.min.css" />
 <?php endif ?>
