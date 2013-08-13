@@ -26,7 +26,7 @@ class AppController extends Controller {
 			$this->Session->write('requested_url','/'.$this->request->url);
 			if($email == 'guest@greyback.net') {
 				$this->Session->setFlash('Oops! The page you were trying to reach is restricted. Please log in to continue.','alert');
-				$this->redirect(array('controller' => 'users', 'action' => 'login'));
+				$this->redirect(array('controller' => 'users', 'action' => 'login','admin'=>false));
 			} else {
 				$this->Session->setFlash('Oops! The page you were trying to reach is restricted. You need to be an administrator to access that.','alert');
 				$this->redirect(array('controller' => 'users', 'action' => 'dashboard','admin'=>false));

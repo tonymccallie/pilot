@@ -160,8 +160,41 @@ class UsersController extends AppController {
 	}
 	
 	
-	function admin_index() {
-		
+	public function admin_index() {
+		$this->User->recursive = 0;
+		$this->set('users', $this->paginate());
+	}
+
+	public function admin_edit($id = null) {
+		if (!$this->User->exists($id)) {
+			throw new NotFoundException(__('Invalid user'));
+		}
+		if ($this->request->is('post') || $this->request->is('put')) {
+			if ($this->User->save($this->request->data)) {
+				$this->Session->setFlash('The user has been saved','success');
+				$this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash('The user could not be saved. Please, try again.','error');
+			}
+		} else {
+			$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
+			$this->request->data = $this->User->find('first', $options);
+		}
+		$this->set('roles',$this->User->Role->find('list'));
+	}
+
+
+	public function admin_delete($id = null) {
+		$this->User->id = $id;
+		if (!$this->User->exists()) {
+			throw new NotFoundException(__('Invalid user'));
+		}
+		if ($this->User->delete()) {
+			$this->Session->setFlash('User deleted','success');
+			$this->redirect(array('action' => 'index'));
+		}
+		$this->Session->setFlash('User was not deleted','error');
+		$this->redirect(array('action' => 'index'));
 	}
 }
 ?>
