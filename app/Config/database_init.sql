@@ -18,7 +18,18 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 
-INSERT INTO  `app_install`.`roles` (
+CREATE TABLE `login_tokens` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `token` varchar(32) NOT NULL,
+  `duration` varchar(32) NOT NULL,
+  `used` tinyint(1) NOT NULL DEFAULT '0',
+  `created` datetime NOT NULL,
+  `expires` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
+
+INSERT INTO `roles` (
 `id` ,
 `name` ,
 `permissions` ,
@@ -32,14 +43,3 @@ NULL ,  'User',  '*:*,!*:admin_*', NOW( ) , NOW( )
 ), (
 NULL ,  'Admin',  '*:*', NOW( ) , NOW( )
 );
-
-CREATE TABLE `login_tokens` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `token` varchar(32) NOT NULL,
-  `duration` varchar(32) NOT NULL,
-  `used` tinyint(1) NOT NULL DEFAULT '0',
-  `created` datetime NOT NULL,
-  `expires` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
