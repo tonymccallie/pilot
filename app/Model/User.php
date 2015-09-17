@@ -37,7 +37,7 @@ class User extends AppModel {
  * @access public
  * @return void
  */
-	public function beforeValidate() {
+	public function beforeValidate($options = array()) {
 		if(!empty($this->data[$this->alias]['passwd'])) {
 			$this->validate['passwd'] = array(
 				'rule' => array('passwordVerify'),
