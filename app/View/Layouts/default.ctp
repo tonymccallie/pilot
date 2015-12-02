@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>AppInstall</title>
+	<title>MarriageStrong</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="">
@@ -87,6 +87,7 @@
 		<?php echo $this->Session->flash(); ?>
 		<div class="row-fluid">
 			<?php echo $content_for_layout ?>
+			<?php echo Authsome::get('email') ?>
 		</div>
 	</div>
 

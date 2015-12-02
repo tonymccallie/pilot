@@ -40,7 +40,7 @@ class AuthsomeComponent extends Component {
 
 	private $__userModel;
 
-	public function initialize($controller, $settings = array()) {
+	public function initialize(Controller $controller, $settings = array()) {
 		Authsome::instance($this);
 		$this->settings = Set::merge($this->settings, $settings);
 
