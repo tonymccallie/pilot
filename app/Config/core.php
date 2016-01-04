@@ -52,7 +52,7 @@
  */
 	Configure::write('Error', array(
 		'handler' => 'ErrorHandler::handleError',
-		'level' => E_ALL & ~E_DEPRECATED,
+		'level' => E_ALL ^ E_STRICT,
 		'trace' => true
 	));
 
@@ -121,7 +121,7 @@
  *	`manager_index()` and `/manager/controller/index`
  *
  */
-	Configure::write('Routing.prefixes', array('admin'));
+	Configure::write('Routing.prefixes', array('admin','ajax'));
 
 /**
  * Turn off all caching application-wide.
