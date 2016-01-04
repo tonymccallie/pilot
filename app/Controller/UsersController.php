@@ -224,16 +224,14 @@ class UsersController extends AppController {
 		
 		$params = json_decode(file_get_contents('php://input'),true);
 		$params['User']['json'] = json_encode($params['data']);
-		$this->log($params);
 		unset($params['User']['spouse_id']);
 		unset($params['Spouse']);
-		$this->log($params);
 		
 		if($this->User->save($params,array('validate'=>false))) {
 			$user = $this->User->findById($params['User']['id']);
 			$message = array(
 				'status' => 'SUCCESS',
-				'data' => $user
+				'data' => am($user,$params)
 			);
 		}
 		
