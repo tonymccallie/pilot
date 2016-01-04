@@ -26,6 +26,10 @@ class DecisionsController extends AppController {
 			$this->Decision->create();
 		}
 		
+		if(!empty($params['reminder'])) {
+			$data['Decision']['alert_date'] = date('Y-m-d 12:00:00',strtotime($params['reminder']));
+		}
+		
 		if($this->Decision->save($data)) {
 			if(!empty($params['id'])) {
 				$id = $params['id'];
@@ -94,6 +98,7 @@ class DecisionsController extends AppController {
 				)
 			));
 			$this->Decision->deleteAll(array('Decision.id' => $delete));
+
 			//debug($results->raw);
 			echo "\n".count($decisions).' reminders sent.';
 		} else {

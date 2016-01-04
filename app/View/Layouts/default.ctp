@@ -87,6 +87,7 @@
 		<?php echo $this->Session->flash(); ?>
 		<div class="row-fluid">
 			<?php echo $content_for_layout ?>
+			<?php echo Authsome::get('email') ?>
 		</div>
 	</div>
 
