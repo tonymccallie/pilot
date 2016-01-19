@@ -14,12 +14,11 @@ class DecisionsController extends AppController {
 		
 		if(!empty($params['id'])) {
 			$data = $this->Decision->findById($params['id']);
-			$data['Decision']['alert_date'] = date('Y-m-d 12:00:00',strtotime($params['reminder']));
+
 		} else {
 			$data = array(
 				'Decision' => array(
-					'user_id' => $params['user_id'],
-					'alert_date' => date('Y-m-d 12:00:00',strtotime($params['reminder']))
+					'user_id' => $params['user_id']
 				)
 			);
 			
@@ -46,7 +45,7 @@ class DecisionsController extends AppController {
 	}
 	
 	function ajax_delete() {
-		Configure::write('debug', 2);
+		Configure::write('debug', 0);
 		$this->layout = "ajax";
 		$this->view = "ajax";
 		$message = array(
@@ -55,6 +54,7 @@ class DecisionsController extends AppController {
 		);
 		
 		$params = json_decode(file_get_contents('php://input'),true);
+		$message['data'] = $params;
 		
 		if(!empty($params['id'])) {
 			$message = array(
