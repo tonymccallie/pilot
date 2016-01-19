@@ -14,14 +14,12 @@ class DecisionsController extends AppController {
 		
 		if(!empty($params['id'])) {
 			$data = $this->Decision->findById($params['id']);
-
 		} else {
 			$data = array(
 				'Decision' => array(
 					'user_id' => $params['user_id']
 				)
 			);
-			
 			$this->Decision->create();
 		}
 		

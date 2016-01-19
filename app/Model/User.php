@@ -213,7 +213,7 @@ class User extends AppModel {
  * @return void
  * @access public
  */
-	public function allowed($controller, $action, $obj = null) {
+	static function allowed($controller, $action, $obj = null) {
 		$rolePerms = Authsome::get('Role.permissions');
 		return Common::requestAllowed($controller, $action, $rolePerms, true);
 	}
