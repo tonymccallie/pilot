@@ -175,7 +175,7 @@ throw new Exception(
 		}
 
 		// Extract the duration appendix from the token
-		$tokenParts = split(':', $token);
+		$tokenParts = explode(':', $token);
 		$duration = array_pop($tokenParts);
 		$token = join(':', $tokenParts);
 
