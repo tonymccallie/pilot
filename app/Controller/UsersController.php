@@ -92,7 +92,7 @@ class UsersController extends AppController {
 	}
 	
 	function ajax_register() {
-		Configure::write('debug', 2);
+		Configure::write('debug', 0);
 		$this->layout = "ajax";
 		$this->view = "ajax";
 		
