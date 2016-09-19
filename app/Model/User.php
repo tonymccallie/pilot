@@ -8,10 +8,6 @@ class User extends AppModel {
 			'className' => 'Role',
 			'foreignKey' => 'role_id'
 		),
-		'Spouse' => array(
-			'className' => 'User',
-			'foreignKey' => 'spouse_id'
-		),
 	);
 
 	var $hasMany = array(
@@ -32,12 +28,6 @@ class User extends AppModel {
 				'message' => 'That email address is already in use.'
 			)
 		),
-		'link_code' => array(
-			'unique' => array(
-				'rule' => array('isUnique'),
-				'message' => 'That link code is already in use, please try saving again'
-			)
-		)
 	);
 
 
