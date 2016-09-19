@@ -12,7 +12,7 @@ class EmailConfig {
         'host' => 'ssl://smtp.gmail.com',
         'port' => 465,
         'username' => 'tony@threeleaf.net',
-        'password' => 'crystalann',
+        'password' => 'Crystalann0411',
         'transport' => 'Smtp'
     );
 
