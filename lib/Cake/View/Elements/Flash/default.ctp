@@ -1,7 +1,1 @@
-<?php
-$class = 'message';
-if (!empty($params['class'])) {
-    $class .= ' ' . $params['class'];
-}
-?>
-<div id="<?php echo h($key) ?>Message" class="<?php echo h($class) ?>"><?php echo h($message) ?></div>
+<div id="<?php echo $key; ?>Message" class="<?php echo !empty($params['class']) ? $params['class'] : 'message'; ?>"><?php echo $message; ?></div>

@@ -234,7 +234,7 @@ class Common {
  * @param int $length. (default: 10)
  * @return void
  */
-	function generateRandom($length = 10, $numbers = false) {
+	static function generateRandom($length = 10, $numbers = false) {
 		$random = "";
 		
 		// define possible characters

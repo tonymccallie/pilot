@@ -1334,7 +1334,7 @@ class ModelIntegrationTest extends BaseModelTest {
 		$Article->useTable = false;
 		$Article->id = 1;
 		$result = $Article->exists();
-		$this->assertFalse($result);
+		$this->assertTrue($result);
 	}
 
 /**

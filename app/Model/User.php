@@ -8,6 +8,10 @@ class User extends AppModel {
 			'className' => 'Role',
 			'foreignKey' => 'role_id'
 		),
+		'Spouse' => array(
+			'className' => 'User',
+			'foreignKey' => 'spouse_id'
+		),
 	);
 
 	var $hasMany = array(
@@ -28,6 +32,12 @@ class User extends AppModel {
 				'message' => 'That email address is already in use.'
 			)
 		),
+		'link_code' => array(
+			'unique' => array(
+				'rule' => array('isUnique'),
+				'message' => 'That link code is already in use, please try saving again'
+			)
+		)
 	);
 
 
@@ -75,7 +85,7 @@ class User extends AppModel {
 			case 'guest':
 				$guestRole = $this->Role->lookup(array(
 					'name' => 'Guest',
-					'permissions' => '!*:*,CakeError:*,Pages:*,Users:login,Users:register,Users:recover,Users:logout',
+					'permissions' => '!*:*,CakeError:*,Pages:*,Users:login,Users:register,Users:recover,Users:ajax_*',
 				));
 
 				$guestUser = $this->lookup(array(
@@ -94,7 +104,7 @@ class User extends AppModel {
 				);
 				break;
 			case 'cookie':
-				$arToken = split(':', $credentials['token']);
+				$arToken = explode(':', $credentials['token']);
 				if(count($arToken)<=1) {
 					return false;
 				}
@@ -203,7 +213,7 @@ class User extends AppModel {
  * @return void
  * @access public
  */
-	public function allowed($controller, $action, $obj = null) {
+	static function allowed($controller, $action, $obj = null) {
 		$rolePerms = Authsome::get('Role.permissions');
 		return Common::requestAllowed($controller, $action, $rolePerms, true);
 	}

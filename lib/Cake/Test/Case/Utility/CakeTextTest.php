@@ -19,28 +19,17 @@
 App::uses('CakeText', 'Utility');
 
 /**
- * CakeText Tests
+ * CakeTextTest class
  *
- * @package Cake.Test.Case.Utility
- * @coversDefaultClass CakeText
+ * @package       Cake.Test.Case.Utility
  */
 class CakeTextTest extends CakeTestCase {
 
-/**
- * Setup object under test
- *
- * @return void
- */
 	public function setUp() {
 		parent::setUp();
 		$this->Text = new CakeText();
 	}
 
-/**
- * Tear down object under test
- *
- * @return void
- */
 	public function tearDown() {
 		parent::tearDown();
 		unset($this->Text);
@@ -50,7 +39,6 @@ class CakeTextTest extends CakeTestCase {
  * testUuidGeneration method
  *
  * @return void
- * @covers ::uuid
  */
 	public function testUuidGeneration() {
 		$result = CakeText::uuid();
@@ -63,7 +51,6 @@ class CakeTextTest extends CakeTestCase {
  * testMultipleUuidGeneration method
  *
  * @return void
- * @covers ::uuid
  */
 	public function testMultipleUuidGeneration() {
 		$check = array();
@@ -83,7 +70,6 @@ class CakeTextTest extends CakeTestCase {
  * testInsert method
  *
  * @return void
- * @covers ::insert
  */
 	public function testInsert() {
 		$string = 'some string';
@@ -245,7 +231,6 @@ class CakeTextTest extends CakeTestCase {
  * test Clean Insert
  *
  * @return void
- * @covers ::cleanInsert
  */
 	public function testCleanInsert() {
 		$result = CakeText::cleanInsert(':incomplete', array(
@@ -286,7 +271,6 @@ class CakeTextTest extends CakeTestCase {
  * CakeText::insert().
  *
  * @return void
- * @covers ::insert
  */
 	public function testAutoIgnoreBadInsertData() {
 		$data = array('foo' => 'alpha', 'bar' => 'beta', 'fale' => array());
@@ -298,7 +282,6 @@ class CakeTextTest extends CakeTestCase {
  * testTokenize method
  *
  * @return void
- * @covers ::tokenize
  */
 	public function testTokenize() {
 		$result = CakeText::tokenize('A,(short,boring test)');
@@ -335,7 +318,6 @@ class CakeTextTest extends CakeTestCase {
  * testReplaceWithQuestionMarkInString method
  *
  * @return void
- * @covers ::insert
  */
 	public function testReplaceWithQuestionMarkInString() {
 		$string = ':a, :b and :c?';
@@ -349,8 +331,6 @@ class CakeTextTest extends CakeTestCase {
  *
  * @dataProvider wordWrapProvider
  * @return void
- * @covers ::wordWrap
- * @covers ::_wordWrap
  */
 	public function testWordWrap($text, $width, $break = "\n", $cut = false) {
 		$result = CakeText::wordWrap($text, $width, $break, $cut);
@@ -384,8 +364,6 @@ class CakeTextTest extends CakeTestCase {
  * test that wordWrap() properly handle unicode strings.
  *
  * @return void
- * @covers ::wordWrap
- * @covers ::_wordWrap
  */
 	public function testWordWrapUnicodeAware() {
 		$text = 'Но вим омниюм факёльиси элыктрам, мюнырэ лэгыры векж ыт. Выльёт квюандо нюмквуам ты кюм. Зыд эю рыбюм.';
@@ -413,8 +391,6 @@ TEXT;
  * test that wordWrap() properly handle newline characters.
  *
  * @return void
- * @covers ::wordWrap
- * @covers ::_wordWrap
  */
 	public function testWordWrapNewlineAware() {
 		$text = 'This is a line that is almost the 55 chars long.
@@ -432,9 +408,6 @@ TEXT;
  * test wrap method.
  *
  * @return void
- * @covers ::wrap
- * @covers ::wordWrap
- * @covers ::_wordWrap
  */
 	public function testWrap() {
 		$text = 'This is the song that never ends. This is the song that never ends. This is the song that never ends.';
@@ -470,9 +443,6 @@ TEXT;
  * test wrap() indenting
  *
  * @return void
- * @covers ::wrap
- * @covers ::wordWrap
- * @covers ::_wordWrap
  */
 	public function testWrapIndent() {
 		$text = 'This is the song that never ends. This is the song that never ends. This is the song that never ends.';
@@ -489,7 +459,6 @@ TEXT;
  * testTruncate method
  *
  * @return void
- * @covers ::truncate
  */
 	public function testTruncate() {
 		$text1 = 'The quick brown fox jumps over the lazy dog';
@@ -595,7 +564,6 @@ podeís adquirirla.</span></p>
  * testTruncate method with non utf8 sites
  *
  * @return void
- * @covers ::truncate
  */
 	public function testTruncateLegacy() {
 		Configure::write('App.encoding', 'ISO-8859-1');
@@ -619,7 +587,6 @@ podeís adquirirla.</span></p>
  * testTail method
  *
  * @return void
- * @covers ::tail
  */
 	public function testTail() {
 		$text1 = 'The quick brown fox jumps over the lazy dog';
@@ -663,7 +630,6 @@ podeís adquirirla.</span></p>
  * testHighlight method
  *
  * @return void
- * @covers ::highlight
  */
 	public function testHighlight() {
 		$text = 'This is a test text';
@@ -698,7 +664,6 @@ podeís adquirirla.</span></p>
  * testHighlightHtml method
  *
  * @return void
- * @covers ::highlight
  */
 	public function testHighlightHtml() {
 		$text1 = '<p>strongbow isn&rsquo;t real cider</p>';
@@ -725,7 +690,6 @@ podeís adquirirla.</span></p>
  * testHighlightMulti method
  *
  * @return void
- * @covers ::highlight
  */
 	public function testHighlightMulti() {
 		$text = 'This is a test text';
@@ -739,7 +703,6 @@ podeís adquirirla.</span></p>
  * testStripLinks method
  *
  * @return void
- * @covers ::stripLinks
  */
 	public function testStripLinks() {
 		$text = 'This is a test text';
@@ -767,7 +730,6 @@ podeís adquirirla.</span></p>
  * testHighlightCaseInsensitivity method
  *
  * @return void
- * @covers ::highlight
  */
 	public function testHighlightCaseInsensitivity() {
 		$text = 'This is a Test text';
@@ -784,7 +746,6 @@ podeís adquirirla.</span></p>
  * testExcerpt method
  *
  * @return void
- * @covers ::excerpt
  */
 	public function testExcerpt() {
 		$text = 'This is a phrase with test text to play with';
@@ -825,7 +786,6 @@ podeís adquirirla.</span></p>
  * testExcerptCaseInsensitivity method
  *
  * @return void
- * @covers ::excerpt
  */
 	public function testExcerptCaseInsensitivity() {
 		$text = 'This is a phrase with test text to play with';
@@ -843,7 +803,6 @@ podeís adquirirla.</span></p>
  * testListGeneration method
  *
  * @return void
- * @covers ::toList
  */
 	public function testListGeneration() {
 		$result = $this->Text->toList(array());

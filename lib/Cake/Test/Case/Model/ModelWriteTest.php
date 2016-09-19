@@ -2785,9 +2785,18 @@ class ModelWriteTest extends BaseModelTest {
 
 		$TestModel = new TheVoid();
 		$this->assertFalse($TestModel->exists());
+	}
 
+/**
+ * testRecordExistsMissingTable method
+ *
+ * @expectedException PDOException
+ * @return void
+ */
+	public function testRecordExistsMissingTable() {
+		$TestModel = new TheVoid();
 		$TestModel->id = 5;
-		$this->assertFalse($TestModel->exists());
+		$TestModel->exists();
 	}
 
 /**
