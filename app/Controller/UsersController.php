@@ -206,8 +206,36 @@ class UsersController extends AppController {
 		
 		$message = array(
 			'status' => 'ERROR',
-			'data' => 'Init'
+			'data' => 'Recover Init'
 		);
+		
+		$input = file_get_contents('php://input');
+		
+		$params = json_decode($input,true);
+		
+		if($params) {
+			//send email
+			$user = $this->User->findByEmail($params['email']);
+			if(!$user) {
+				$message['data'] = 'No user with that email found.';
+			} else {
+				$url = Common::currentUrl().'users/recover/'.$user['User']['id'].'-'.substr($user['User']['passwd'],0,6);
+			
+				Common::email(array(
+					'to' => $user['User']['email'],
+					'subject' => 'Password Reset Instructions',
+					'template' => 'recover',
+					'variables' => array(
+						'url' => $url
+					)
+				),'');
+	
+				$message = array(
+					'status' => 'SUCCESS',
+					'data' => $user
+				);
+			}
+		}
 		
 		echo json_encode($message);
 	}
