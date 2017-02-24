@@ -179,7 +179,7 @@ class Common {
  * @return void
  * @access public
  */
-	function requestAllowed($object, $property, $rules, $default = false) {
+	static function requestAllowed($object, $property, $rules, $default = false) {
 		$allowed = $default;
 
 		preg_match_all('/\s?([^:,]+):([^,:]+)/is', $rules, $matches, PREG_SET_ORDER);
