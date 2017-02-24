@@ -9,9 +9,26 @@
 <div class="">
 	<?php
 		echo $this->Form->create();
-			echo $this->Form->input('id',array());
-			echo $this->Form->input('email',array());
-			echo $this->Form->input('role_id',array());
+	?>
+	<div class="row-fluid">
+		<div class="span6">
+			<?php
+				echo $this->Form->input('id');
+				echo $this->Form->input('email',array('class'=>'span12'));
+				echo $this->Form->input('role_id',array('class'=>'span12'));
+				echo $this->Form->input('rate',array('label'=>'Day Rate','class'=>'span12'));
+			?>
+		</div>
+		<div class="span6">
+			<?php
+				echo $this->Form->input('first_name',array('class'=>'span12'));
+				echo $this->Form->input('last_name',array('class'=>'span12'));
+				echo $this->Form->input('passwd',array('class'=>'span12'));
+				echo $this->Form->input('passwd_verify',array('class'=>'span12','type'=>'password'));
+			?>
+		</div>
+	</div>	
+	<?php
 		echo $this->Form->end(array('label'=>'Save User','class'=>'btn'));
 	?>
 </div>

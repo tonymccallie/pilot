@@ -2,6 +2,9 @@
 @import "less/greyback-defaults.less";
 @import "less/responsive.less";
 @import "fonts.less";
+@import "default.css";
+@import "default.date.css";
+@import "default.time.css";
 
 body {
 	padding-top: @navbarHeight + 20px; /* 60px to make the container go all the way to the bottom of the topbar */
@@ -23,6 +26,19 @@ body {
 	padding: 20px 0 10px; 
 	background: @grayDark;
 	color: @grayLight;
+}
+
+.fifty {
+	width: 50%;
+	float: left;
+	input {
+		width: 90%;
+	}
+}
+
+.full {
+	width: 100%;
+	float: left;
 }
 
 @import "responsive_large.less";

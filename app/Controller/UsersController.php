@@ -473,8 +473,26 @@ class UsersController extends AppController {
 			'contain' => array()
 		);
 */
+		$this->paginate = array(
+			'conditions' => array(
+				'User.role_id NOT' => 4
+			)
+		);
 		
 		$this->set('users', $this->paginate());
+	}
+	
+	public function admin_add() {
+		if ($this->request->is('post') || $this->request->is('put')) {
+			if ($this->User->save($this->request->data)) {
+				$this->Session->setFlash('The user has been saved','success');
+				$this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash('The user could not be saved. Please, try again.','error');
+			}
+		}
+		$roles = $this->User->Role->find('list');
+		$this->set(compact('roles'));
 	}
 
 	public function admin_edit($id = null) {
@@ -482,6 +500,9 @@ class UsersController extends AppController {
 			throw new NotFoundException(__('Invalid user'));
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
+			if(empty($this->request->data['User']['passwd'])) {
+				unset($this->request->data['User']['passwd']);
+			}
 			if ($this->User->save($this->request->data)) {
 				$this->Session->setFlash('The user has been saved','success');
 				$this->redirect(array('action' => 'index'));
@@ -491,6 +512,7 @@ class UsersController extends AppController {
 		} else {
 			$options = array('conditions' => array('User.id' => $id));
 			$this->request->data = $this->User->find('first', $options);
+			$this->request->data['User']['passwd'] = '';
 		}
 		$this->set('roles',$this->User->Role->find('list'));
 	}

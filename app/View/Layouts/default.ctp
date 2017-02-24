@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>MarriageStrong</title>
+	<title>Air-sistant: <?php echo $title_for_layout ?></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="">
@@ -28,6 +28,10 @@
 	<!-- Le Scripts -->
 	<script src="<?php echo $this->webroot ?>js/jquery-1.10.2.min.js"></script>
 	<script src="<?php echo $this->webroot ?>js/bootstrap.min.js"></script>
+	<script src="<?php echo $this->webroot ?>js/angular.min.js"></script>
+	<script src="<?php echo $this->webroot ?>js/picker.js"></script>
+	<script src="<?php echo $this->webroot ?>js/picker.date.js"></script>
+	<script src="<?php echo $this->webroot ?>js/picker.time.js"></script>
 	<script src="<?php echo $this->webroot ?>js/custom.js"></script>
 
 	<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -58,7 +62,7 @@
 				</button>
 				<!-- /Mobile Menu Button -->
 
-				<?php echo $this->Html->link('<i class="icon-html5"></i> AppInstall','/',array('escape'=>false,'class'=>'brand')) ?>
+				<?php echo $this->Html->link('<i class="icon-plane"></i> Air-sistant','/',array('escape'=>false,'class'=>'brand')) ?>
 
 				<div class="nav-collapse collapse pull-right">
 					<ul class="nav">
@@ -67,6 +71,8 @@
 						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="admin_dropdown">Admin <b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><?php echo $this->Html->link('Users','/admin/users') ?></li>
+								<li><?php echo $this->Html->link('Planes','/admin/planes') ?></li>
+								<li><?php echo $this->Html->link('Flightplans','/admin/flightplans') ?></li>
 							</ul>
 						</li>
 						<?php endif ?>
@@ -87,7 +93,10 @@
 		<?php echo $this->Session->flash(); ?>
 		<div class="row-fluid">
 			<?php echo $content_for_layout ?>
-			<?php echo Authsome::get('email') ?>
+			<?php //echo Authsome::get('email') ?>
+		</div>
+		<div class="row-fluid">
+			<p><br /></p>
 		</div>
 	</div>
 

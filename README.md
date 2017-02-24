@@ -1,6 +1,5 @@
-ThreeLeaf AppInstall
+ThreeLeaf Pilot App
 ====================
 
-Basic boilerplate for user based CakePHP app with Bootstrap, FontAwesome, & Authsome.
 
 Update 1.0

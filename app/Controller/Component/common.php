@@ -211,17 +211,17 @@ class Common {
  * @access public
  * @return void
  */
-	function currentUrl() {
+	static function currentUrl() {
 		$pageURL = 'http';
 		$pageURL .= "://";
 		if(!empty($_SERVER['SERVER_PORT'])) {
 			if($_SERVER["SERVER_PORT"] != "80") {
-				$pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$this->webroot;
+				$pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].Router::url('/');
 			} else {
-				$pageURL .= $_SERVER["SERVER_NAME"].$this->webroot;
+				$pageURL .= $_SERVER["SERVER_NAME"].Router::url('/');
 			}
 		} else {
-			$pageURL .= 'www.grouppost.com'.$this->webroot;
+			$pageURL .= $this->webroot;
 		}
 		return $pageURL;
 	}
@@ -272,7 +272,7 @@ class Common {
  * @param array $config. (default: array())
  * @return void
  */
-	function email($config = array(), $message = "") {
+	static function email($config = array(), $message = "") {
 		$settings = array(
 			'to' => 'UNSET TO <info@greyback.net>',
 			'cc' => array(),
@@ -281,7 +281,8 @@ class Common {
 			'subject' => 'SUBJECT',
 			'title' => 'TITLE',
 			'template' => 'simple',
-			'variables' => array()
+			'variables' => array(),
+			'attachments' => array()
 		);
 
 		$config = am($settings,$config);
@@ -296,6 +297,7 @@ class Common {
 			->subject($config['subject'])
 			->template($config['template'])
 			->emailFormat('html')
+			->attachments($config['attachments'])
 			->viewVars($config['variables']);
 		if(!empty($config['replyTo'])) {
 			$email->replyTo($config['replyTo']);

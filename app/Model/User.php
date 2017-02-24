@@ -15,6 +15,39 @@ class User extends AppModel {
 			'dependent' => true,
 		),
 	);
+	
+	public $hasAndBelongsToMany = array(
+		'Owner' => array(
+			'className' => 'Plane',
+			'joinTable' => 'plane_owners',
+			'foreignKey' => 'user_id',
+			'associationForeignKey' => 'plane_id',
+			'unique' => true, //true = delete current relations on save
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'finderQuery' => '',
+			'deleteQuery' => '',
+			'insertQuery' => ''
+		),
+		'Manager' => array(
+			'className' => 'Plane',
+			'joinTable' => 'plane_managers',
+			'foreignKey' => 'user_id',
+			'associationForeignKey' => 'plane_id',
+			'unique' => true, //true = delete current relations on save
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'finderQuery' => '',
+			'deleteQuery' => '',
+			'insertQuery' => ''
+		),
+	);
 
 
 	var $validate = array(
