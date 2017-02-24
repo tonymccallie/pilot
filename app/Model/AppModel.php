@@ -3,7 +3,7 @@ App::uses('Model', 'Model');
 class AppModel extends Model {
 	var $actsAs = array('Containable', 'Lookupable');
 	
-	public function find($type, $options = array(), $order = null, $recursive = null) {
+	public function find($type, $options = array()) {
 		switch ($type) {
 			case 'concatlist':
 				if(!isset($options['fields']) || count($options['fields']) < 3) {
@@ -73,7 +73,7 @@ class AppModel extends Model {
                 }
 
                 unset ($options['model'], $options['scope']);
-                return parent::find ($conditions, $options, $order, $recursive);
+                return parent::find($conditions, $options);
                	break;
 
 			default:
