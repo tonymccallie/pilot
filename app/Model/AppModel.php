@@ -3,7 +3,7 @@ App::uses('Model', 'Model');
 class AppModel extends Model {
 	var $actsAs = array('Containable', 'Lookupable');
 	
-	public function find($type, $options = array()) {
+	public function find($type = 'first', $options = array()) {
 		switch ($type) {
 			case 'concatlist':
 				if(!isset($options['fields']) || count($options['fields']) < 3) {
