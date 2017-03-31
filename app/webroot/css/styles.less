@@ -7,8 +7,13 @@
 @import "default.date.css";
 @import "default.time.css";
 
+html, body {
+	height: 100%;
+}
+
 body {
 	padding-top: @navbarHeight + 20px; /* 60px to make the container go all the way to the bottom of the topbar */
+	position: relative;
 }
 
 #banner {
@@ -27,6 +32,9 @@ body {
 	padding: 20px 0 10px; 
 	background: @grayDark;
 	color: @grayLight;
+	position: absolute;
+	bottom: 60px;
+	width: 100%;
 }
 
 .fifty {
